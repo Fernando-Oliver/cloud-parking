@@ -64,4 +64,9 @@ public class ParkingService {
 		parkingMap.remove(id);
 	}
 
+	public Parking exit(String id) {
+		return null;
+	}
+
+
 }
