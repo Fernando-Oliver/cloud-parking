@@ -31,14 +31,14 @@ public class ParkingService {
 	private static String getUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
-	
-	public List<Parking> findAll(){
+
+	public List<Parking> findAll() {
 		return parkingMap.values().stream().collect(Collectors.toList());
 	}
 
 	public Parking findById(String id) {
-		Parking parking =  parkingMap.get(id);
-		if(parking == null) {
+		Parking parking = parkingMap.get(id);
+		if (parking == null) {
 			throw new ParkingNotFoundException(id);
 		}
 		return parking;
@@ -51,4 +51,17 @@ public class ParkingService {
 		parkingMap.put(uuid, parkingCreate);
 		return parkingCreate;
 	}
+
+	public Parking update(String id, Parking parkingCreate) {
+		 Parking parking = findById(id);
+		 parking.setColor(parkingCreate.getColor());
+		 parkingMap.replace(id, parking);
+		 return parking;
+	}
+	
+	public void delete(String id) {
+		Parking parking = findById(id);
+		parkingMap.remove(id);
+	}
+
 }
