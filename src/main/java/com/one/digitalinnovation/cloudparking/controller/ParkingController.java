@@ -42,6 +42,7 @@ public class ParkingController {
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation("Find by id parking")
 	public ResponseEntity<ParkingDTO> findById(@PathVariable String id) {
 		Parking parking = parkingService.findById(id);
 		ParkingDTO result = parkingMapper.toParkingDTO(parking);
@@ -49,6 +50,7 @@ public class ParkingController {
 	}
 	
 	@PostMapping
+	@ApiOperation("Create parking")
 	public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto) {
 		Parking parkingCreate = parkingMapper.toParkingCreate(dto);
 		Parking parking = parkingService.create(parkingCreate);
