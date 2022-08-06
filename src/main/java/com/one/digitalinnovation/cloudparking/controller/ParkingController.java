@@ -27,6 +27,7 @@ public class ParkingController {
 	public List<ParkingDTO> findAll(){
 		List<Parking> parkingList = parkingService.findAll();
 		List<ParkingDTO> result = parkingMapper.toParkingDTOList(parkingList);
+		return result;
 		}
 	}
 
